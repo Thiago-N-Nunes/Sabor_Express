@@ -7,7 +7,7 @@ class Restaurante:
         self.ativo = False
         Restaurante.restaurantes.append(self)
     
-    #transformação de espaços de memória em string     
+    #transformação de espaços de memória em string
     def __str__(self):
         return f'{self.nome} | {self.categoria}'
     
@@ -19,6 +19,4 @@ class Restaurante:
 restaurante_muhaui = Restaurante('Muhaui', 'Vegano')
 restaurante_oviedo = Restaurante('Oviedo', 'Ibérico')
 #Atributo de instancia
-print(restaurante_muhaui)
-
 Restaurante.listar_restaurantes()
