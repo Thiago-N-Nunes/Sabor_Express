@@ -1,11 +1,10 @@
 #Classe = Define um conjunto de caracteristicas que objetos pertencentes a ela têm em comum
 class restaurante:
-    nome = ''
-    categoria = ''
-    ativo = False
+    def __init__(self,nome,categoria):
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
 #Criação de Objeto
-restaurante_muhaui = restaurante()
+restaurante_muhaui = restaurante('Muhaui', 'Vegano')
 #Atributo de instancia
-restaurante_muhaui.nome = 'Muhaui'
-restaurante_muhaui.categoria = 'Vegano'
-print(vars(restaurante_muhaui))
+print(vars(restaurante_muhaui ))
