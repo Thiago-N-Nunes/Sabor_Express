@@ -1,3 +1,5 @@
+#importação de classe
+from modelos.avaliacao import Avaliacao
 #Criação de classe
 class Restaurante:
     restaurantes = [] #Essa lista vai receber todos os restaurantes que forem cadastrados
@@ -6,6 +8,7 @@ class Restaurante:
         self._nome = nome.title()
         self._categoria = categoria.upper()
         self._ativo = False
+        self._avaliacao = []#Essa lista vai receber todos as avaliações que forem adicionadas
         Restaurante.restaurantes.append(self) # Toda vez que um restaurante for criado, será armazenado na lista 'restaurantes'
         
 #    def __str__(self): #Transforma a maneira de visualizar os objetos/atributos
@@ -22,9 +25,3 @@ class Restaurante:
         return '✅' if self._ativo else '✖'
     def alternar_estado(self):#Método para os objetos da classe
         self._ativo = not self._ativo
-
-restaurante_zuko = Restaurante('zuko sushi', 'Asiatico')
-restaurante_zuko.alternar_estado()
-restaurante_Torf = Restaurante('torf habib', 'Arabe')
-     
-Restaurante.listar_restaurantes()
