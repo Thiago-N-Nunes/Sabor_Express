@@ -1,5 +1,7 @@
 #importação de classe
-from modelos.avaliacao import Avaliacao
+from modelos.cardapio.avaliacao import Avaliacao
+from modelos.cardapio.prato import Prato
+from modelos.cardapio.bebidas import Bebida
 #Criação de classe
 class Restaurante:
     restaurantes = [] #Essa lista vai receber todos os restaurantes que forem cadastrados
@@ -9,6 +11,7 @@ class Restaurante:
         self._categoria = categoria.upper()
         self._ativo = False
         self._avaliacao = []#Essa lista vai receber todos as avaliações que forem adicionadas
+        self._cardapio = []#-Cardapio é uma lista vazia que vai receber as informações dos items que terão nele
         Restaurante.restaurantes.append(self) # Toda vez que um restaurante for criado, será armazenado na lista 'restaurantes'
         
 #    def __str__(self): #Transforma a maneira de visualizar os objetos/atributos
@@ -41,3 +44,9 @@ class Restaurante:
         qtd_notas = len(self._avaliacao)
         media = round(soma_notas / qtd_notas,1)
         return media
+
+    def adicionar_bebida_cardapio(self, bebida):
+        self._cardapio.append(bebida)
+
+    def adicionar_prato_cardapio(self,prato):
+        self._cardapio.append(prato)
