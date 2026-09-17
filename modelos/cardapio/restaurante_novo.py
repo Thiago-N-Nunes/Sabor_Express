@@ -1,7 +1,7 @@
 #importação de classe
 from modelos.cardapio.avaliacao import Avaliacao
-from modelos.cardapio.prato import Prato
-from modelos.cardapio.bebidas import Bebida
+from modelos.cardapio.item_cardapio import ItemCardapio
+
 #Criação de classe
 class Restaurante:
     restaurantes = [] #Essa lista vai receber todos os restaurantes que forem cadastrados
@@ -45,8 +45,27 @@ class Restaurante:
         media = round(soma_notas / qtd_notas,1)
         return media
 
-    def adicionar_bebida_cardapio(self, bebida):
+#    def adicionar_bebida_cardapio(self, bebida):
         self._cardapio.append(bebida)
 
-    def adicionar_prato_cardapio(self,prato):
+#    def adicionar_prato_cardapio(self,prato):
         self._cardapio.append(prato)
+
+    def adicionar_no_cardapio(self,item):
+        if isinstance(item,ItemCardapio):
+            self._cardapio.append(item)
+
+    @property
+    def exibir_cardapio(self):
+        print(f'CARDÁPIO {self._nome.upper()}\n')
+        for i,item in enumerate(self._cardapio, start=1):
+            if hasattr(item, 'tamanho'):
+                mensagem_sobremesa = f'{i}. {item._nome.ljust(20)} | R${item._preco:.2f}| Tipo:{item.tipo.ljust(20)}| Tamanho: {item.tamanho.ljust(20)}| Descrição : {item.descricao}'
+                print(mensagem_sobremesa)
+            elif hasattr(item,"descricao"):
+                mensagem_prato = f'{i}. {item._nome.ljust(20)} | R${item._preco:.2f}| Descrição:{item.descricao}'
+                print(mensagem_prato)
+            elif hasattr(item, "tipo"):
+                mensagem_bebida = f'{i}. {item._nome.ljust(20)} | R${item._preco:.2f}| Tipo:{item.tipo}'
+                print(mensagem_bebida)
+            
